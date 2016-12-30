@@ -1,4 +1,4 @@
-# sort-imports
+# sort-import-declarations
 
 This rule ensures imports are always sorted alphabetically by source.
 
@@ -7,7 +7,7 @@ This rule ensures imports are always sorted alphabetically by source.
 ```json
 {
   "rules": {
-    "ocd/sort-imports": 2
+    "ocd/sort-import-declarations": 2
   }
 }
 ```

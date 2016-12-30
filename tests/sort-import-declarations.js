@@ -1,9 +1,9 @@
 var RuleTester = require('eslint').RuleTester
-var rule = require('../rules/sort-imports')
+var rule = require('../rules/sort-import-declarations')
 
 var ruleTester = new RuleTester()
 
-ruleTester.run('sort-imports', rule, {
+ruleTester.run('sort-import-declarations', rule, {
   invalid: [
     {
       code: 'import Baz from "baz"\n' +
