@@ -24,7 +24,7 @@ env:
   - CXX=g++-4.8
   global:
     secure: Na+cjhPS/bk0hv9CGzLIJBv7TXKGfe8S0rF8ev1ihdw4j4ZplAgBFBoqhtJ2FOOZleR7q7dHiX68lUVjf8XZJlBidW5IzWHaYPSM8bCh/HLb66eLlpJHVGJ2mrfuWdGQvVCSC01KcPsAJvFWcThMjF9zufhh4w4unHuvdlnHQikKKoqWQfXuZtQAZh7oUnTa6wnZvNpKj/82wUsmA9DeasNck8frBG+n8faG2QjpXWZdxuzk2t6e3Wld6phjIbN/b3YkxMSNrGLu9holGrWWP19eLrrZT6um6x9jQTqN3HXOMzJx0WM9tAvBNs7SSMSWdRE+WFdBukj/TKs4nH13sMaRG2+I9k36ufDiGi1WAyPzKFGcBaffH9YHIfB33zbMNBvzCD+Y/w+gU50SXxIf7uzEuuQ7zNxZj2275mt/yIZSwfF04HzbmVKl6MAZsfE/uPC+WO7fOFurosvH/6t30+BtF3NEjJyyIqecd6g9awDtim9klnORcMiO+5xXenwf3do4o5TvQVxtGpFriYonIPWj6pQQNJQvsF7d3+9llhUM2Y5Q2IhDPNx3ml/Fx8qzUeWjDZsLPKvKtcWGOLqeBZ6jrbRG2GepzRiEP3mei9d/W48egH0jNZHsSJ5w7QQ164l0DSSqQ6ynvl1FcZkeKo5w5mG7t/z1w+mS3BAA0qY=
-before_deploy:
+before_install:
   - npm config set spin false
   - npm install -g coveralls pr-bumper
   - pr-bumper check
