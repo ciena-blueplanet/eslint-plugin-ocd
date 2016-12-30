@@ -1,0 +1,8 @@
+.github/
+.travis/
+coverage/
+tests/
+.npmignore
+.remarkrc
+.travis.yml
+dependency-snapshot.json

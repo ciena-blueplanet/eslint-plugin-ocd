@@ -1,0 +1,40 @@
+{
+  "author": "Matthew Dahl (https://github.com/sandersky)",
+  "bugs": {
+    "url": "https://github.com/ciena-blueplanet/eslint-plugin-ocd/issues"
+  },
+  "description": "Obsessive compulsive ESLint rules for Javascript projects.",
+  "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.0.1",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "remark-cli": "^2.1.0",
+    "remark-lint": "^5.4.0"
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "eslint-plugin-ocd",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ciena-blueplanet/eslint-plugin-ocd"
+  },
+  "scripts": {
+    "lint": "npm run lint-md && npm run lint-js",
+    "lint-js": "eslint *.js rules/**/*.js tests/**/*.js",
+    "lint-md": "remark *.md documentation/**/*.md",
+    "test": "npm run lint && npm run utest",
+    "utest": "istanbul cover _mocha -- --recursive tests"
+  },
+  "version": "0.0.0"
+}
