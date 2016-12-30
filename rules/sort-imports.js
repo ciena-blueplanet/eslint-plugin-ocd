@@ -5,81 +5,65 @@
  */
 
 /**
- * Check if import declarations are sorted alphabetically by source
- * @param {ESLintContext} context - context
- * @param {Array<ESLintNode>} importDeclarations - import declaration nodes
- * @returns {SortCheckResult} sort check result
+ * Sort import declarations alphabetically by source
+ * @param {Array<ESLintNode>} items - import declarations
+ * @returns {Array<ESLintNode>} sorted import declarations
  */
-function checkIfImportsAreSorted (context, importDeclarations) {
-  var expected = importDeclarations
-    .slice(0) // Shallow clone of array
-    .sort(importDeclarationSorter)
+function deterministicSort (items) {
+  var remainingItems = Array.from(items)
+  var sortedItems = []
 
-  var notSorted = expected
-    .some(function (node, index) {
-      return node !== importDeclarations[index]
-    })
+  while (remainingItems.length !== 0) {
+    var nextItem = remainingItems[0]
+    var nextItemIndex = 0
 
-  if (notSorted) {
-    expected
-      .forEach(function (node, index) {
-        var importDeclaration = importDeclarations[index]
-        var message = (node !== importDeclaration ? 'Expected import of ' + node.source.value : '')
-
-        context.report({
-          fix: function (fixer) {
-            // We must keep first import declaration in tree so we can replace it with sorted list
-            if (index === 0) {
-              return fixer
-            }
-
-            return fixer.remove(importDeclaration)
-          },
-          message: message,
-          node: importDeclaration
-        })
+    remainingItems
+      .forEach(function (item, index) {
+        if (item.source.value < nextItem.source.value) {
+          nextItem = item
+          nextItemIndex = index
+        }
       })
+
+    sortedItems.push(nextItem)
+    remainingItems.splice(nextItemIndex, 1)
   }
 
-  return {
-    expected: expected,
-    notSorted: notSorted
-  }
+  return sortedItems
 }
 
 /**
- * Sort import declarations by source
- * @param {ESLintNode} a - first import declaration
- * @param {ESLintNode} b - second import declaration
- * @returns {Number} number indiciating sort order
- */
-function importDeclarationSorter (a, b) {
-  return a.source.value > b.source.value
-}
-
-/**
- * Added imports to beginning of program
+ * Sort import declarations alphabetically by source
  * @param {ESLintContext} context - context
- * @param {ESLintNode} node - program node
  * @param {Array<ESLintNode>} importDeclarations - import declaration nodes
- * @param {ESLintNode} firstImportDeclaration - first import declaration node
  */
-function insertImports (context, node, importDeclarations, firstImportDeclaration) {
-  var sourceText = context.getSourceCode().getText()
+function sortImportDeclarations (context, importDeclarations) {
+  var expected = deterministicSort(importDeclarations)
+  var sourceTextArray = context.getSourceCode().getText().split('')
 
-  var insertText = importDeclarations
-    .map(function (importDeclaration) {
-      return sourceText.slice(importDeclaration.start, importDeclaration.end)
+  importDeclarations
+    .forEach(function (importDeclaration, index) {
+      var expectedImportDeclaration = expected[index]
+
+      if (importDeclaration === expectedImportDeclaration) {
+        return
+      }
+
+      var expectedImportDeclarationText = sourceTextArray
+        .slice(
+          expectedImportDeclaration.range[0],
+          expectedImportDeclaration.range[1]
+        )
+        .join('')
+
+      context.report({
+        fix: function (fixer) {
+          return fixer.replaceText(importDeclaration, expectedImportDeclarationText)
+        },
+        message: 'Expected import of ' + expectedImportDeclaration.source.value,
+        node: importDeclaration
+      })
     })
-    .join('\n')
-
-  context.report({
-    fix: function (fixer) {
-      return fixer.replaceText(firstImportDeclaration, insertText)
-    },
-    message: '',
-    node: node
-  })
 }
 
 module.exports = {
@@ -100,11 +84,7 @@ module.exports = {
           return
         }
 
-        var result = checkIfImportsAreSorted(context, importDeclarations)
-
-        if (result.notSorted) {
-          insertImports(context, node, result.expected, importDeclarations[0])
-        }
+        sortImportDeclarations(context, importDeclarations)
       }
     }
   },
