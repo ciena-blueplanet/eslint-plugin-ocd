@@ -17,19 +17,13 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
-          line: 1,
-          message: '',
-          type: 'Program'
-        },
-        {
-          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
         }
       ],
       output: 'import Bar from "bar"\n' +
-              'import Baz from "baz"\n',
+              'import Baz from "baz"',
       parser: 'babel-eslint'
     },
     {
@@ -45,12 +39,6 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
-          line: 1,
-          message: '',
-          type: 'Program'
-        },
-        {
-          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
@@ -64,7 +52,7 @@ ruleTester.run('sort-imports', rule, {
       ],
       output: 'import Bar from "bar"\n' +
               'import Baz from "baz"\n' +
-              'import Foo from "foo"\n\n',
+              'import Foo from "foo"',
       parser: 'babel-eslint'
     },
     {
@@ -74,18 +62,6 @@ ruleTester.run('sort-imports', rule, {
       errors: [
         {
           column: 1,
-          line: 1,
-          message: '',
-          type: 'ImportDeclaration'
-        },
-        {
-          column: 1,
-          line: 1,
-          message: '',
-          type: 'Program'
-        },
-        {
-          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
@@ -99,7 +75,7 @@ ruleTester.run('sort-imports', rule, {
       ],
       output: 'import Bar from "bar"\n' +
               'import Baz from "baz"\n' +
-              'import Foo from "foo"\n\n',
+              'import Foo from "foo"',
       parser: 'babel-eslint'
     },
     {
@@ -115,18 +91,6 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
-          line: 1,
-          message: '',
-          type: 'Program'
-        },
-        {
-          column: 1,
-          line: 2,
-          message: '',
-          type: 'ImportDeclaration'
-        },
-        {
-          column: 1,
           line: 3,
           message: 'Expected import of foo',
           type: 'ImportDeclaration'
@@ -134,7 +98,7 @@ ruleTester.run('sort-imports', rule, {
       ],
       output: 'import Bar from "bar"\n' +
               'import Baz from "baz"\n' +
-              'import Foo from "foo"\n\n',
+              'import Foo from "foo"',
       parser: 'babel-eslint'
     },
     {
@@ -150,26 +114,14 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
-          line: 1,
-          message: '',
-          type: 'Program'
-        },
-        {
-          column: 1,
           line: 2,
           message: 'Expected import of baz',
-          type: 'ImportDeclaration'
-        },
-        {
-          column: 1,
-          line: 3,
-          message: '',
           type: 'ImportDeclaration'
         }
       ],
       output: 'import Bar from "bar"\n' +
               'import Baz from "baz"\n' +
-              'import Foo from "foo"\n\n',
+              'import Foo from "foo"',
       parser: 'babel-eslint'
     },
     {
@@ -184,19 +136,13 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
-          line: 1,
-          message: '',
-          type: 'Program'
-        },
-        {
-          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
         }
       ],
       output: 'import B from "bar"\n' +
-              'import A from "baz"\n',
+              'import A from "baz"',
       parser: 'babel-eslint'
     },
     {
@@ -212,26 +158,14 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
-          line: 1,
-          message: '',
-          type: 'Program'
-        },
-        {
-          column: 1,
           line: 2,
           message: 'Expected import of baz',
-          type: 'ImportDeclaration'
-        },
-        {
-          column: 1,
-          line: 3,
-          message: '',
           type: 'ImportDeclaration'
         }
       ],
       output: 'import B from "bar"\n' +
               'import A from "baz"\n' +
-              'import C from "foo"\n\n',
+              'import C from "foo"',
       parser: 'babel-eslint'
     }
   ],
@@ -260,6 +194,20 @@ ruleTester.run('sort-imports', rule, {
       code: 'import C from "bar"\n' +
             'import A from "baz"\n' +
             'import B from "foo"',
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'import {expect} from "chai"\n' +
+            'import {expectSelectWithState, filterSelect} from "dummy/tests/helpers/ember-frost-core"\n' +
+            'import {integration} from "dummy/tests/helpers/ember-test-utils/describe-component"\n' +
+            'import Ember from "ember"\n' +
+            'import {keyCodes} from "ember-frost-core/utils"\n' +
+            'import {$hook} from "ember-hook"\n' +
+            'import {describeComponent, it} from "ember-mocha"\n' +
+            'import wait from "ember-test-helpers/wait"\n' +
+            'import hbs from "htmlbars-inline-precompile"\n' +
+            'import {afterEach, beforeEach, describe} from "mocha"\n' +
+            'import sinon from "sinon"',
       parser: 'babel-eslint'
     }
   ]
