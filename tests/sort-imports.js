@@ -17,11 +17,19 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
+          line: 1,
+          message: '',
+          type: 'Program'
+        },
+        {
+          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
         }
       ],
+      output: 'import Bar from "bar"\n' +
+              'import Baz from "baz"\n',
       parser: 'babel-eslint'
     },
     {
@@ -37,6 +45,12 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
+          line: 1,
+          message: '',
+          type: 'Program'
+        },
+        {
+          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
@@ -48,6 +62,9 @@ ruleTester.run('sort-imports', rule, {
           type: 'ImportDeclaration'
         }
       ],
+      output: 'import Bar from "bar"\n' +
+              'import Baz from "baz"\n' +
+              'import Foo from "foo"\n\n',
       parser: 'babel-eslint'
     },
     {
@@ -57,6 +74,18 @@ ruleTester.run('sort-imports', rule, {
       errors: [
         {
           column: 1,
+          line: 1,
+          message: '',
+          type: 'ImportDeclaration'
+        },
+        {
+          column: 1,
+          line: 1,
+          message: '',
+          type: 'Program'
+        },
+        {
+          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
@@ -68,12 +97,15 @@ ruleTester.run('sort-imports', rule, {
           type: 'ImportDeclaration'
         }
       ],
+      output: 'import Bar from "bar"\n' +
+              'import Baz from "baz"\n' +
+              'import Foo from "foo"\n\n',
       parser: 'babel-eslint'
     },
     {
-      code: 'import Bar from "foo"\n' +
-            'import Foo from "baz"\n' +
-            'import Baz from "bar"',
+      code: 'import Foo from "foo"\n' +
+            'import Baz from "baz"\n' +
+            'import Bar from "bar"',
       errors: [
         {
           column: 1,
@@ -83,11 +115,26 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
+          line: 1,
+          message: '',
+          type: 'Program'
+        },
+        {
+          column: 1,
+          line: 2,
+          message: '',
+          type: 'ImportDeclaration'
+        },
+        {
+          column: 1,
           line: 3,
           message: 'Expected import of foo',
           type: 'ImportDeclaration'
         }
       ],
+      output: 'import Bar from "bar"\n' +
+              'import Baz from "baz"\n' +
+              'import Foo from "foo"\n\n',
       parser: 'babel-eslint'
     },
     {
@@ -103,11 +150,26 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
+          line: 1,
+          message: '',
+          type: 'Program'
+        },
+        {
+          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
+        },
+        {
+          column: 1,
+          line: 3,
+          message: '',
+          type: 'ImportDeclaration'
         }
       ],
+      output: 'import Bar from "bar"\n' +
+              'import Baz from "baz"\n' +
+              'import Foo from "foo"\n\n',
       parser: 'babel-eslint'
     },
     {
@@ -122,11 +184,19 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
+          line: 1,
+          message: '',
+          type: 'Program'
+        },
+        {
+          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
         }
       ],
+      output: 'import B from "bar"\n' +
+              'import A from "baz"\n',
       parser: 'babel-eslint'
     },
     {
@@ -142,11 +212,26 @@ ruleTester.run('sort-imports', rule, {
         },
         {
           column: 1,
+          line: 1,
+          message: '',
+          type: 'Program'
+        },
+        {
+          column: 1,
           line: 2,
           message: 'Expected import of baz',
           type: 'ImportDeclaration'
+        },
+        {
+          column: 1,
+          line: 3,
+          message: '',
+          type: 'ImportDeclaration'
         }
       ],
+      output: 'import B from "bar"\n' +
+              'import A from "baz"\n' +
+              'import C from "foo"\n\n',
       parser: 'babel-eslint'
     }
   ],
