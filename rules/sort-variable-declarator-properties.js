@@ -65,7 +65,7 @@ module.exports = {
     return {
       /**
        * Make sure variable declarator properties are sorted
-       * @param {ESLintNode} node - variable declaration node
+       * @param {ESLintNode} node - variable declarator node
        */
       VariableDeclarator: function (node) {
         var properties = node.id.properties

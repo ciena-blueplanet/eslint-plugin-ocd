@@ -208,6 +208,16 @@ ruleTester.run('sort-variable-declarator-properties', rule, {
             '  set\n' +
             '} = Ember',
       parser: 'babel-eslint'
+    },
+    {
+      code: 'const a = [1, 2]\n' +
+            'const [b, c] = a',
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'const a = [1, 2]\n' +
+            'const [c, b] = a',
+      parser: 'babel-eslint'
     }
   ]
 })
