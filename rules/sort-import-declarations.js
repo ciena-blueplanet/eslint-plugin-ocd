@@ -1,10 +1,4 @@
 /**
- * @typedef {Object} SortCheckResult
- * @property {Array<ESLintNode>} expected - import declaration nodes in expected order
- * @property {Boolean} notSorted - whether or not imports are not already sorted
- */
-
-/**
  * Sort import declarations alphabetically by source
  * @param {Array<ESLintNode>} items - import declarations
  * @returns {Array<ESLintNode>} sorted import declarations

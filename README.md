@@ -24,7 +24,10 @@ npm install --save-dev eslint-plugin-ocd
 
 ## Rules
 
-* [sort-imports](documentation/rules/sort-imports.md) – Sort imports alphabetically.
+### Stylistic Issues
+
+* [sort-import-declarations](documentation/rules/sort-import-declarations.md) – Sort imports alphabetically.
+* [sort-variable-declarator-properties](documentation/rules/sort-variable-declarator-properties.md) – Sort variable declarator properties alphabetically.
 
 [bithound-img]: https://www.bithound.io/github/ciena-blueplanet/eslint-plugin-ocd/badges/score.svg "bitHound"
 [bithound-url]: https://www.bithound.io/github/ciena-blueplanet/eslint-plugin-ocd
