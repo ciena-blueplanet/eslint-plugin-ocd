@@ -78,7 +78,36 @@ module.exports = {
           return
         }
 
-        sortImportDeclarations(context, importDeclarations)
+        if (context.options.length === 0 ||
+          !context.options[0].localPrefixes ||
+          !context.options[0].localPrefixes.length === 0
+        ) {
+          sortImportDeclarations(context, importDeclarations)
+          return
+        }
+
+        var externalImportDeclarations = []
+        var localImportDeclarations = []
+        var localPrefixes = context.options[0].localPrefixes
+
+        importDeclarations
+          .forEach(function (importDeclaration) {
+            var local = false
+            var source = importDeclaration.source.value
+
+            localPrefixes
+              .forEach(function (prefix) {
+                if (source.indexOf(prefix) === 0) {
+                  local = true
+                }
+              })
+
+            var array = local ? localImportDeclarations : externalImportDeclarations
+            array.push(importDeclaration)
+          })
+
+        sortImportDeclarations(context, externalImportDeclarations)
+        sortImportDeclarations(context, localImportDeclarations)
       }
     }
   },
@@ -89,6 +118,19 @@ module.exports = {
       description: 'Ensure import declarations are alphabetically sorted by source',
       recommended: true
     },
-    fixable: 'code'
+    fixable: 'code',
+    schema: [
+      {
+        properties: {
+          localPrefixes: {
+            items: {
+              type: 'string'
+            },
+            type: 'array'
+          }
+        },
+        type: 'object'
+      }
+    ]
   }
 }
