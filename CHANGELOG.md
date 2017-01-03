@@ -1,3 +1,8 @@
+# 0.0.6
+
+* **Fixed** typo.
+
+
 # 0.0.5
 
 * **Added** option to `sort-imports` rule to allow separating local and external packages, with each group being properly sorted.
