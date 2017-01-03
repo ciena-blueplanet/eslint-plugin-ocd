@@ -73,7 +73,7 @@ module.exports = {
             return specifier.type === 'ImportSpecifier'
           })
 
-        if (!nonDefaultSpecifiers.length === 0) {
+        if (nonDefaultSpecifiers.length === 0) {
           return
         }
 

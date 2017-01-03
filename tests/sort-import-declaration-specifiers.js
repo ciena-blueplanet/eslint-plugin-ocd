@@ -90,6 +90,10 @@ ruleTester.run('sort-import-declaration-specifiers', rule, {
             '  it\n' +
             '} from "mocha"',
       parser: 'babel-eslint'
+    },
+    {
+      code: 'import Ember from "ember"',
+      parser: 'babel-eslint'
     }
   ]
 })

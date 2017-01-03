@@ -209,6 +209,22 @@ ruleTester.run('sort-import-declarations', rule, {
             'import {afterEach, beforeEach, describe} from "mocha"\n' +
             'import sinon from "sinon"',
       parser: 'babel-eslint'
+    },
+    {
+      code: 'import foo from "foo"\n' +
+            'import bar from "../bar"\n' +
+            'import baz from "./baz"\n' +
+            'import spam from "dummy/spam"',
+      options: [
+        {
+          localPrefixes: ['../', './', 'dummy/']
+        }
+      ],
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'export default {}',
+      parser: 'babel-eslint'
     }
   ]
 })
