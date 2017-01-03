@@ -1,3 +1,8 @@
+# 0.0.5
+
+* **Added** option to `sort-imports` rule to allow separating local and external packages, with each group being properly sorted.
+
+
 # 0.0.4
 
 * **Added** `sort-import-declaration-specifiers` rule to sort import declaration specifiers alphabetically.

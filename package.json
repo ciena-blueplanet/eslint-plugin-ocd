@@ -36,5 +36,5 @@
     "test": "npm run lint && npm run utest",
     "utest": "istanbul cover _mocha -- --recursive tests"
   },
-  "version": "0.0.4"
+  "version": "0.0.5"
 }
