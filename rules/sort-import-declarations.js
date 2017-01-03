@@ -80,7 +80,7 @@ module.exports = {
 
         if (context.options.length === 0 ||
           !context.options[0].localPrefixes ||
-          !context.options[0].localPrefixes.length === 0
+          context.options[0].localPrefixes.length === 0
         ) {
           sortImportDeclarations(context, importDeclarations)
           return
