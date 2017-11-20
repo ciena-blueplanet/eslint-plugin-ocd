@@ -20,7 +20,7 @@
     "remark-lint": "^6.0.1"
   },
   "engines": {
-    "node": ">= 6.9.0"
+    "node": ">= 6.9.1"
   },
   "keywords": [
     "eslint",

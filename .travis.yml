@@ -2,7 +2,7 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-  - '6.9'
+  - '6.9.1'
   - 'stable'
 branches:
   except:
@@ -13,7 +13,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
-  firefox: 'latest-esr'
+  firefox: 'latest'
 cache:
   directories:
     - node_modules
@@ -24,20 +24,20 @@ env:
     secure: Na+cjhPS/bk0hv9CGzLIJBv7TXKGfe8S0rF8ev1ihdw4j4ZplAgBFBoqhtJ2FOOZleR7q7dHiX68lUVjf8XZJlBidW5IzWHaYPSM8bCh/HLb66eLlpJHVGJ2mrfuWdGQvVCSC01KcPsAJvFWcThMjF9zufhh4w4unHuvdlnHQikKKoqWQfXuZtQAZh7oUnTa6wnZvNpKj/82wUsmA9DeasNck8frBG+n8faG2QjpXWZdxuzk2t6e3Wld6phjIbN/b3YkxMSNrGLu9holGrWWP19eLrrZT6um6x9jQTqN3HXOMzJx0WM9tAvBNs7SSMSWdRE+WFdBukj/TKs4nH13sMaRG2+I9k36ufDiGi1WAyPzKFGcBaffH9YHIfB33zbMNBvzCD+Y/w+gU50SXxIf7uzEuuQ7zNxZj2275mt/yIZSwfF04HzbmVKl6MAZsfE/uPC+WO7fOFurosvH/6t30+BtF3NEjJyyIqecd6g9awDtim9klnORcMiO+5xXenwf3do4o5TvQVxtGpFriYonIPWj6pQQNJQvsF7d3+9llhUM2Y5Q2IhDPNx3ml/Fx8qzUeWjDZsLPKvKtcWGOLqeBZ6jrbRG2GepzRiEP3mei9d/W48egH0jNZHsSJ5w7QQ164l0DSSqQ6ynvl1FcZkeKo5w5mG7t/z1w+mS3BAA0qY=
 before_install:
   - npm config set spin false
-  - npm install -g coveralls pr-bumper
-  - pr-bumper check
+  - npm install -g coveralls pr-bumper@^1.0.0
+  - $(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh
 install:
-  - npm install
+  - $(npm root -g)/pr-bumper/.travis/maybe-install.sh
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 script:
-  - npm run test
+  - $(npm root -g)/pr-bumper/.travis/maybe-test.sh
+  - .travis/maybe-bump-version.sh
 after_success:
-  - .travis/publish-coverage.sh
-before_deploy:
-  - pr-bumper bump
+  - .travis/maybe-publish-coverage.sh
+
 deploy:
   provider: npm
   email: npm.ciena@gmail.com
@@ -45,9 +45,9 @@ deploy:
   api_key:
     secure: kC5wiffBS2uzLDbWQdCW6QfvE4GBSVpRdtFW1si7kcfRQl7Vnm2bDGBsofNoATwsO/vZPQ+dMea/+Pnxzt7vVNwL59TdOxfbuxdR5uQdyChpAVpgA6JD3WrsXoiO3R97oy8tvxlOlC2Bb6ydtGfhMlCy8em/F2W0stHb97EiPfg17H0xMTG6zpYtMo7mBRiE8gqa+Tuo7jluQT9jWza3oAdKRXLzIbGy2w3fbjWUP+sPcRbZdw9gRvI2u+KvNX7g/tXAo2i9Sa7Y5BLCKLVY3B2OoCuqnz8jVt1n2MhvP4cPZqkgkCDmIKPN8w/6Zwk/sNEh5OnXk7kcq0Wa5ZonRvbToLHrFfczZ8/5XQVSbP22O3/DYpYM8T/gCiRs9YF6+ER3A6OL03ogphwR/SEoKHizmj0QiqVrr6Ix5biLfYTJYHnky/esld70LIkxTUWkDsDv6Np8+LZt0QG/0cdW4//Kbf3l3wG3x1xevhupHrfbF6CaMGDumyKNbmLbKicd/WZo5o6XVx4HSGrllyMgRxXpH/bdaH/2Wt5Xnz9p0e4DZb/eJ+WdB1QY+ThazoCVt2XwdacUgoWBg/CJa0vcx9xDBeC31FuOj+TJeeuPbjy77ae9bWK8wXeyPjlEyU35uph69ii+8QVM1TeokaqKxG02Wpr3NBu/MhODliZGtJA=
   on:
-    branch: master
-    node: 'stable'
-    tags: false
+    all_branches: true
+    node: '6.9.1'
+    tags: true
 notifications:
 slack:
   secure: Nu7Lp1HcSwzOKxVbKBFS4baZHZHQumVoZSVmxMB2GXhcWybOLunOcZNKuHzU1ouV1Kqhyb0z2X6726R+vkiA1mVttEK0bM8KYfcXtgggkEmjNBRF34IvXsAAcGIs1DiuI/fKLmvUqIjoRnI3ObOkLUm8R7TZoJG9y1vJK++2m0G5SuT9jSc3Fpwi9AYTc2KfnWIS/441V5t2iB2AxeWkeKimnRHDFVQXrWrg4n1NScLHG14TDPvTaGNjqCElnyHsYNf+v/1UY4ohXIVj35X35W5gN5FuZb0kdVjmdhOBS0Ax/3OJlZKGSLI+IFAqdIgUPbhVgFWFjsdSBwEjuex2Gyv1bSx8cjc+OqeaJjlJ7K1YsEAX8nuGlt6MnwgG4pz7OkaCQCuEywwFWEzBaUHlv409qhw8SRUPWpU6fh5LIzKvoaRHvPTVDidx3SIx7e29A5YeaFEhotVncjK9TSTd2Mqu9LnAe/53qVrPNm3QY61FNWt13xbYXuqdJYU/xOrBIg13To1yszkflJFlOtE5DCqIO9Ft2Rc+NVuuuUNX2kS4p5DkRykhW6buQCbT5uwPncWQIHbwnN2LF0c0TfdeZNQEnNOw+DIV69vB427EmrjC2imM0R5WBBFn0sH/3tFjs4EFsbvzfBJpCIgZgbbXB8YTWOTXuvQnCOh8KdBqyDc=
