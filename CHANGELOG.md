@@ -1,3 +1,8 @@
+# 1.0.1 (2017-11-21)
+* **Updated** to `pr-bumper` version 2
+* **Updated** `PULL_REQUEST_TEMPLATE.md` with support for `pr-bumper #none#` option
+* **Updated** the node engine version to `6.11.0`
+
 # 1.0.0 (2017-11-20)
 Updates from PR that did not publish: https://github.com/ciena-blueplanet/eslint-plugin-ocd/pull/15
 * **Updated** scripts used in travis CI for publishing
