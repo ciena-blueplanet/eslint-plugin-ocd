@@ -1,3 +1,7 @@
+# 1.0.2 (2017-11-21)
+* **Updated** engine node version to `>= 6.0.0`
+
+
 # 1.0.1 (2017-11-21)
 * **Updated** to `pr-bumper` version 2
 * **Updated** `PULL_REQUEST_TEMPLATE.md` with support for `pr-bumper #none#` option
