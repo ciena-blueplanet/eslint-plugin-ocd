@@ -1,3 +1,12 @@
+# 1.0.3 (2017-12-18)
+* **Updated** babel-eslint to ^8.0.3 (verified)
+* **Updated** pin eslint-plugin-promise @ 3.6.0 (verified)
+* **Updated** pin eslint-plugin-standard @ 3.0.1 (verified)
+* **Updated** pin eslint-config-standard @ 10.2.1 (verified)
+* **Updated** pin eslint-plugin-import @ 2.8.0 (verified)
+* **Updated** pin eslint-plugin-node @ 5.2.1 (verified)
+
+
 # 1.0.2 (2017-11-21)
 * **Updated** engine node version to `>= 6.0.0`
 
