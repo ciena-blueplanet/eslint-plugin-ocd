@@ -31,7 +31,7 @@
   "name": "eslint-plugin-ocd",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ciena-blueplanet/eslint-plugin-ocd"
+    "url": "https://github.com/ciena-blueplanet/eslint-plugin-ocd.git"
   },
   "scripts": {
     "lint": "npm run lint-md && npm run lint-js",
