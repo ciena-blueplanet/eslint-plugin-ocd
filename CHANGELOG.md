@@ -1,3 +1,8 @@
+# 1.0.4 (2018-03-06)
+* **Updated** `PULL_REQUEST_TEMPLATE.md`
+* **Added** `ISSUE_TEMPLATE.md`
+* **Added** slack channel integration
+
 # 1.0.3 (2017-12-18)
 * **Updated** babel-eslint to ^8.0.3 (verified)
 * **Updated** pin eslint-plugin-promise @ 3.6.0 (verified)
