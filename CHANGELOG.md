@@ -1,3 +1,7 @@
+# 1.0.5 (2018-03-06)
+* **Updated** the repository.url value in package.json
+
+
 # 1.0.4 (2018-03-06)
 * **Updated** `PULL_REQUEST_TEMPLATE.md`
 * **Added** `ISSUE_TEMPLATE.md`
