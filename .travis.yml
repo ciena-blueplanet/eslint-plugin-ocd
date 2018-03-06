@@ -21,7 +21,7 @@ env:
     secure: aI/15mOf66vVy4iUV9Bw+nu1YJwunKxkH0CU3Uodn7c8GnuixKpdjGu0ljPk07uZXYBzDxRDUeEE2Gnov6rL1GmMQqW0nrKdU0IXms3ZY0WMz5NEVh3soVqLpAlqh/WfYvdW/kfiiIlIRlxBCVcWuZrOJSDQNU0VMrTHysi2ajeqkn7QaPgX9n38iZbPmAI8+4IzHsLF4mJhY6MfzBn7y29Yltuuib0aQLwZl6Lr8gbJZbgyIw1LAKB4n9RjMiXJ+aGzr6V0gxEtaU8WwTnDrFoH1hY/6+FeaRwvID2KXJ+PmmZUwoPochbR1a33Rb/baUUIdjB8aZPxhTyoEdB7r/NVsPJYXYSzRLmyIrs3ECsd0kMDYRdas34S9UOLWN9DNHaOAHZ2Gn5QbqzsP6YAX8fcYoGFR3Z8Q5XqCLA4bikSMpVecrRKFKT9+eoJwJpM7bO1PiqMsWFepT3qDoG4egj8A7iHJ/y0Zkk87/3iKYr2pmBLzEsMd+tfRKoyGr13Jg4SnDUdWomRWFDqeBzajHJ7XfVOOvOhM7JQ5/7WALrsTRfe/Q9WRLg7CWKPRUS4LcePMDXiZfoN0jhxLl4Rr/l6ZzO/gA09TmT1yL0VOeXcaZcDCY5HfFQPS59PjHhhuw8AuDjkqIR2I080122gBk+Wy3CLYb/ITKGiWw5vHFI=
 before_install:
   - npm config set spin false
-  - npm install -g coveralls pr-bumper@^2.0.0 ciena-devops^1.0.0
+  - npm install -g coveralls pr-bumper@^2.0.0 ciena-devops@^1.0.0
   - $(npm root -g)/pr-bumper/.travis/maybe-check-scope.sh
 install:
   - $(npm root -g)/pr-bumper/.travis/maybe-install.sh
