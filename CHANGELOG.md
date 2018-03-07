@@ -1,3 +1,9 @@
+# 1.0.6 (2018-03-07)
+* **Updated** pull request and issue templates to remove unrelated specifics
+* **Updated** to use version 3 of `pr-bumper`
+* **Updated** CI to run node version `8.1.2`
+* **Added** `package-lock.json` file
+
 # 1.0.5 (2018-03-06)
 * **Updated** the repository.url value in package.json
 
