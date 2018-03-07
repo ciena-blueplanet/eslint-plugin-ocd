@@ -51,11 +51,12 @@ We realize there is a lot of data requested here. We ask only that you do your b
 
 (answer all that are applicable)
 
-* [ ] I am using the latest released version (can check with `npm ls <packag-name>`)
+* [ ] I am using the latest released version (can check with `npm ls <package-name>`)
 * I am using these browsers:
   * [ ] Latest Chrome
   * [ ] Latest Firefox
 * [ ] My version of `Node` is:
+* [ ] My version of `npm` is:
 * [ ] My OS is:
 * [ ] Include the contents of your _package.json_ file
 
