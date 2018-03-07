@@ -54,8 +54,6 @@ Examples:
   * incompatible API change
     * using the code how used to will cease working
     * using the code how used to will have a different outcome
-    * possibly changes to test helpers (depends on the changes made)
-  * any changes to the **_dependencies_** entry in the _package.json_ file
 
 # CHANGELOG
 
