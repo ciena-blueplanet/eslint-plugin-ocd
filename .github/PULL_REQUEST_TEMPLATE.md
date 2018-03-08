@@ -13,9 +13,6 @@ Put `Closes #XXXX` below to auto-close the issue that this PR addresses:
 
 * Closes #
 
-## Screenshots or recordings
-Please provide screenshots or recordings if this PR is modifying the visual UI or UX.
-
 ## Checklist
 * [ ] I have added tests that prove my fix is effective or that my feature works
 * [ ] I have evaluated if the _README.md_ documentation needs to be updated
