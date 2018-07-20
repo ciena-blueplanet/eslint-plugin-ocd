@@ -1,3 +1,8 @@
+# 1.0.8 (2018-07-20)
+
+* .  `Fixed` issue where plugin would break when it encounters a spread operator when destructuring an object
+
+
 # 1.0.7 (2018-07-20)
 
 * **Fixed** Travis API key.
