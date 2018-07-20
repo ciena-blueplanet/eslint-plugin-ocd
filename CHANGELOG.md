@@ -1,3 +1,8 @@
+# 1.0.7 (2018-07-20)
+
+* **Fixed** Travis API key.
+
+
 # 1.0.6 (2018-03-07)
 * **Updated** pull request and issue templates to remove unrelated specifics
 * **Updated** to use version 3 of `pr-bumper`
