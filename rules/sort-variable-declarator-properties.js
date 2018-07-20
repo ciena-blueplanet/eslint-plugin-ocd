@@ -13,7 +13,7 @@ function deterministicSort (items) {
 
     remainingItems
       .forEach(function (item, index) {
-        if (item.key.name < nextItem.key.name) {
+        if (item.key && nextItem.key && item.key.name < nextItem.key.name) {
           nextItem = item
           nextItemIndex = index
         }

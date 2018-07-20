@@ -218,6 +218,10 @@ ruleTester.run('sort-variable-declarator-properties', rule, {
       code: 'const a = [1, 2]\n' +
             'const [c, b] = a',
       parser: 'babel-eslint'
+    },
+    {
+      code: 'const {bar, baz, ...rest} = foo',
+      parser: 'babel-eslint'
     }
   ]
 })
