@@ -63,6 +63,7 @@ function sortImportDeclarations (context, importDeclarations) {
 module.exports = {
   create: function (context) {
     var importDeclarations = []
+    var ignore = (context.options.length && context.options[0].ignore) || []
 
     return {
       /**
@@ -70,7 +71,9 @@ module.exports = {
        * @param {ESLintNode} node - import declaration node
        */
       ImportDeclaration: function (node) {
-        importDeclarations.push(node)
+        if (ignore.indexOf(node.source.value) === -1) {
+          importDeclarations.push(node)
+        }
       },
 
       'Program:exit': function (node) {
@@ -122,6 +125,12 @@ module.exports = {
     schema: [
       {
         properties: {
+          ignore: {
+            items: {
+              type: 'string'
+            },
+            type: 'array'
+          },
           localPrefixes: {
             items: {
               type: 'string'
