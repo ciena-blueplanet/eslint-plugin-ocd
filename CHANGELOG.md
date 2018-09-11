@@ -1,3 +1,8 @@
+# 1.1.0 (2018-09-11)
+
+-  **Added** `ignore` configuration for `sort-import-declarations` to ignore certain packages such as polyfills.
+
+
 # 1.0.8 (2018-07-20)
 
 * .  `Fixed` issue where plugin would break when it encounters a spread operator when destructuring an object
