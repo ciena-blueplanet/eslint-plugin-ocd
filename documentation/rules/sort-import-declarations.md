@@ -56,3 +56,24 @@ import bar from '../bar'
 import baz from './baz'
 import spam from 'dummy/spam'
 ```
+
+## Ignore certain packages
+
+Sometimes you may find yourself wanting to import certain modules first, such as polyfills, however their names aren't first alphabetically.
+To do this you can simply ignore these packages so the lint rule won't care where they are located relative to the remaining imports.
+
+```
+{
+  "rules": {
+    "ocd/sort-import-declarations": [
+      2,
+      {
+        "ignore": [
+          "polyfill-1",
+          "some-other-polyfill"
+        ]
+      }
+    ]
+  }
+}
+```
