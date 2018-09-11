@@ -225,6 +225,16 @@ ruleTester.run('sort-import-declarations', rule, {
     {
       code: 'export default {}',
       parser: 'babel-eslint'
+    },
+    {
+      code: 'import "polyfills"\n' +
+            'import foo from "foo"',
+      options: [
+        {
+          ignore: ['polyfills']
+        }
+      ],
+      parser: 'babel-eslint'
     }
   ]
 })
